@@ -6,16 +6,19 @@ public class Main {
     public static void main(String[] args) {
 
         Newspaper newspaper = new Newspaper();
-        ArrayList<Article> articles2=new ArrayList<Article>();
-        Article article = new Article();
+
         Scanner scanner = new Scanner(System.in);
+        ArrayList<Article> articles2=new ArrayList<Article>();
         String repeatSwitch="";
         String articleTitle="";
         String articleContent="";
         String articleDate="";
 
-        while(!repeatSwitch.equalsIgnoreCase("quit")) {
+       do {
+
+           Article article = new Article();
             System.out.println("Enter the title of a new article");
+            ArrayList<Article>articles=newspaper.getArticles();
              articleTitle = scanner.nextLine();
             article.setTitle(articleTitle);
             System.out.println("Enter the article");
@@ -24,13 +27,12 @@ public class Main {
             System.out.println("Enter the date of the article");
              articleDate = scanner.nextLine();
             article.setDate(articleDate);
-            newspaper.addArticle(article);
-            for(Article article2: newspaper.getArticles()){
-                System.out.println(article2.getContent());
-            }
+            articles2.add(article);
+            newspaper.setArticles(articles2);
+
             System.out.println("Would you like to continue? Enter any key to continue or 'quit' to exit");
             repeatSwitch=scanner.nextLine();
-        }
+        } while(!repeatSwitch.equalsIgnoreCase("quit"));
 
         String string1=newspaper.showArticles(newspaper.getArticles());
         System.out.println(string1);
