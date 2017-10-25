@@ -14,6 +14,10 @@ public class Main {
         String articleContent="";
         String articleDate="";
 
+        //Title of newspaper
+
+        System.out.println("Enter the title of the newspaper: ");
+        newspaper.setTitle(scanner.nextLine());
        do {
 
            Article article = new Article();
@@ -34,7 +38,9 @@ public class Main {
             repeatSwitch=scanner.nextLine();
         } while(!repeatSwitch.equalsIgnoreCase("quit"));
 
-        String string1=newspaper.showArticles(newspaper.getArticles());
+        String string1=newspaper.getTitle();
+        string1+="\n";
+        string1+=newspaper.showArticles(newspaper.getArticles());
         System.out.println(string1);
 
     }
